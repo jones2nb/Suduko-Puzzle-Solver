@@ -1,4 +1,12 @@
 
+"""
+    Name: Nicholas Jones
+    This is a back tracking algorithm to solve any solvable sudoku puzzle.    
+"""
+
+# is_Valid will check the row and column to make sure there isn't any conflicting
+# numbers it will also check the 3x3 box that the current square is in to make sure
+# there aren't any conflicts. 
 def is_Valid(puz, row, col, num):
     for c in range(0, 9):
         if(puz[row][c] == num):
@@ -61,6 +69,8 @@ def is_Valid(puz, row, col, num):
 
 
 def solve_puzzle(puz, row, col):
+    # if the current square isn't empty that means it was predetermined and it
+    # cannot be changed so we will advance to the next square.
     while(puz[row][col] != 0):
         if(col < 8):
             col += 1
@@ -70,6 +80,10 @@ def solve_puzzle(puz, row, col):
             col = 0
             row += 1
 
+    # check every number 1 through 9 starting at 1 and if it is valid put that
+    # number into the current square and recursivly check the rest of the puzzle.
+    # if the rest of the puzzle can be solved the number will stay in the square
+    # otherwise it is replaced with zero and we continue checking the range 1-9.
     for i in range(1, 10):
         if(is_Valid(puz, row, col, i)):
             puz[row][col] = i
@@ -105,5 +119,4 @@ puzzle = [
 ]
 
 if __name__ == "__main__":
-    print("Python")
     main()

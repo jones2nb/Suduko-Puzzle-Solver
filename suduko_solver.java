@@ -1,4 +1,4 @@
-public class syduko_solver{
+public class suduko_solver{
 
     static int [][] puzzle = {
         {0, 9, 6, 0, 0, 0, 0, 3, 0},
